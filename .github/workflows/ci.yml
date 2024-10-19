@@ -74,14 +74,24 @@ jobs:
       #     target: /home/wyu/Upload
             
       # Copy by using scp to Raspberry Pi 5 Winston Yu hosted at winston.mathworks-workshop.com
-      - name: copy file to a Raspberry PI
-        uses: pierrickdelrieu/scp-action@v0.1.0
+      #- name: copy file to a Raspberry PI
+      #  uses: pierrickdelrieu/scp-action@v0.1.0
+      #  with:
+      #    host: ${{ secrets.DESTINATION_HOST }}
+      #    ssh_port: ${{ secrets.DESTINATION_SSH_PORT }}
+      #    ssh_username: ${{ secrets.SSH_USERNAME }}
+      #    ssh_key: ${{ secrets.SSH_KEY }}
+      #    ssh_passphrase: ${{ secrets.SSH_PASSPHRASE }}
+      #    source_dir: ${{ secrets.SOURCE_FOLDER }}
+      #    destination_dir: ${{ secrets.DESTINATION_FOLDER }}
+      #    rm: true
+
+      - name: copy file to server
+        uses: appleboy/scp-action@v0.1.7
         with:
-          host: ${{ secrets.DESTINATION_HOST }}
-          ssh_port: ${{ secrets.DESTINATION_SSH_PORT }}
-          ssh_username: ${{ secrets.SSH_USERNAME }}
-          ssh_key: ${{ secrets.SSH_KEY }}
-          ssh_passphrase: ${{ secrets.SSH_PASSPHRASE }}
-          source_dir: ${{ secrets.SOURCE_FOLDER }}
-          destination_dir: ${{ secrets.DESTINATION_FOLDER }}
-          rm: true
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.KEY }}
+          port: ${{ secrets.PORT }}
+          source: test-results/*
+          target: /mnt/nfs/resultcloud
