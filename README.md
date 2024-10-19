@@ -1,6 +1,6 @@
 # Example-Raspberry-PI
 
-This repo will host a example that can use public action runner to deploy a file to Raspberry PI thought [!Github Actions scp](https://github.com/marketplace/actions/transfer-files-in-repository-to-remote-server-via-scp
+This repo will host a example that can use public action runner to deploy a file to Raspberry PI thought [!Github Actions scp](https://github.com/marketplace/actions/scp-files)
 )
 
 
