@@ -32,6 +32,13 @@ jobs:
       # Sets up MATLAB on the GitHub Actions runner
       - name: Setup MATLAB
         uses: matlab-actions/setup-matlab@v2
+        with:
+          cache: true
+          products: |
+            MATLAB
+            Deep_Learning_Toolbox
+            MATLAB_Coder
+            MATLAB_Report_Generator
 
       # Setup MATLAB R2024b for Linux selfhosted runner
       #- name: Prepend MATLAB to PATH on Linux
