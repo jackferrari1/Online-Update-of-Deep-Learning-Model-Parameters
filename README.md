@@ -1,5 +1,4 @@
-# Example-Raspberry-PI
-
+# Online Update of Deep Learning Model Parameters
 This repo will host a example that can use public action runner to deploy a file to Raspberry PI through [!Github Actions scp](https://github.com/marketplace/actions/scp-files)
 )
 
