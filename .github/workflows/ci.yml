@@ -1,7 +1,4 @@
-# This is a basic workflow to help you get started with MATLAB Actions
-
 name: MATLAB Build
-
 # Controls when the action will run. 
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
@@ -40,61 +37,13 @@ jobs:
             MATLAB_Coder
             MATLAB_Report_Generator
 
-      # Setup MATLAB R2024b for Linux selfhosted runner
-      #- name: Prepend MATLAB to PATH on Linux
-      #  if: runner.os == 'Linux'
-      #  run: echo "/usr/local/MATLAB/R2024a/bin" >> $GITHUB_PATH
-      
-      # - name: Start display server (required for building doc in MATLAB)
-      #   run: |
-      #     Xvfb :99 & 
-      #     echo "DISPLAY=:99" >> $GITHUB_ENV
-
-      # # Runs a set of commands using the runners shell
-      # - name: Run all tests
-      #   uses: matlab-actions/run-tests@v2
-      #   with:
-      #     source-folder: code
-      #     test-results-junit: test-results/results.xml
-      #     code-coverage-cobertura: code-coverage/coverage.xml
-
-      # You can use "run-command" to execute custom MATLAB scripts, functions, or statements.
+      # You can use "run-command" to execute custom MATLAB scripts, functions, or statements. In this case, use it to run the command "modelUpdate"
       - name: Train network
         uses: matlab-actions/run-command@v2
         with:
             command: "openProject('Example-Raspberry-PI.prj');modelUpdate"
 
-      # - name: Publish Test Results
-      #   uses: EnricoMi/publish-unit-test-result-action/linux@v2
-      #   if: always()
-      #   with:
-      #       files: "test-results/*.xml"
-
-      # Copy by using scp to Raspberry Pi 5 Winston Yu hosted at winston.mathworks-workshop.com
-      # - name: copy file via ssh password
-      #   uses: appleboy/scp-action@v0.1.7
-      #   with:
-      #     host: ${{ secrets.HOST }}
-      #     username: ${{ secrets.USERNAME }}
-      #     password: ${{ secrets.PASSWORD }}
-      #     port: ${{ secrets.PORT }}
-      #     source: "test-results/results.xml,code-coverage/coverage.xml"
-      #     target: /home/wyu/Upload
-            
-      # Copy by using scp to Raspberry Pi 5 Winston Yu hosted at winston.mathworks-workshop.com
-      #- name: copy file to a Raspberry PI
-      #  uses: pierrickdelrieu/scp-action@v0.1.0
-      #  with:
-      #    host: ${{ secrets.DESTINATION_HOST }}
-      #    ssh_port: ${{ secrets.DESTINATION_SSH_PORT }}
-      #    ssh_username: ${{ secrets.SSH_USERNAME }}
-      #    ssh_key: ${{ secrets.SSH_KEY }}
-      #    ssh_passphrase: ${{ secrets.SSH_PASSPHRASE }}
-      #    source_dir: ${{ secrets.SOURCE_FOLDER }}
-      #    destination_dir: ${{ secrets.DESTINATION_FOLDER }}
-      #    rm: true
-
-      - name: copy file to server
+      - name: Copy new learnables to Raspberry Pi
         uses: appleboy/scp-action@v0.1.7
         with:
           host: ${{ secrets.HOST }}
@@ -103,3 +52,4 @@ jobs:
           port: ${{ secrets.PORT }}
           source: learnablesValue.coderdata
           target: /home/wyu/Jupyter/demo
+          
