@@ -21,7 +21,7 @@ The repository demonstrates an automated pipeline that updates the model's learn
 
 ## Usage
 
-### Automated Update Process
+### Getting Started
 
 1. Create a fork of this repository and save the files to your machine. Open `Example-Raspberry-PI.prj` in desktop MATLAB and create a connection to your GitHub repository. [Use Git in MATLAB](https://www.mathworks.com/help/matlab/matlab_prog/use-git-in-matlab.html)
 2. Edit `ci.yml` with:
