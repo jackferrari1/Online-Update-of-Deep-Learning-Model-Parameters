@@ -49,7 +49,6 @@ This example illustrates how to automate the process of updating a deep learning
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-
 ## Acknowledgments
 
 Special thanks to appleboy for the [scp-action](https://github.com/appleboy/scp-action) GitHub Action.
